@@ -9,15 +9,13 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.Jadavpur_Backend.DAO.UserDAO;
+import com.niit.Jadavpur_Backend.modal.Address;
 import com.niit.Jadavpur_Backend.modal.User;
-
-
 
 @Transactional
 @Repository("userDAO")
 public class UserDAOIMPL implements UserDAO 
 {
-
 	@Autowired
 	SessionFactory sessionFactory;
 	
@@ -57,8 +55,6 @@ public class UserDAOIMPL implements UserDAO
 		}
 	}
 	
-	
-	
 	@Override
 	public List<User> getSupplierList() 
 	{
@@ -80,4 +76,22 @@ public class UserDAOIMPL implements UserDAO
 			return null;
 		}
 	}
+
+
+	@Override
+	public boolean insertAddress(Address address) 
+	{
+		try
+		{
+			sessionFactory.getCurrentSession().persist(address);
+			return true;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+
 }
