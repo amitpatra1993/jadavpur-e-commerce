@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 @Entity
 @Table(name="Niit_Jadavpur_CartLines")
 public class CartLines 
