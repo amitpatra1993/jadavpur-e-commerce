@@ -52,5 +52,14 @@ public class HomeController
 		return mv;
 	}
 	
+	@RequestMapping(value="/login")
+	public ModelAndView login()
+	{
+		ModelAndView mv = new ModelAndView("login");
+		mv.addObject("title" , "Online Shopping - LOGIN");
+		
+		return mv;
+	}
+	
 	
 }
