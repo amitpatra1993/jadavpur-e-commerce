@@ -22,7 +22,7 @@ public class CartController
 		mv.addObject("userclickshowcart",true);
 		mv.addObject("title" , "Online Shopping - User Cart");
 		
-		mv.addObject("cartlines" , cartlinesDAO.listAvailable(1) );
+		mv.addObject("cartlines" , cartlinesDAO.listAvailable(22) );
 		return mv;
 	}
 }
