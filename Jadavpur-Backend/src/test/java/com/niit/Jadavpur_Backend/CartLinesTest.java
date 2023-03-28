@@ -34,13 +34,13 @@ import com.niit.Jadavpur_Backend.modal.Product;
 	@Test
 	public void testInsert()
 	{
-		product = productDAO.getProduct(3);
+		product = productDAO.getProduct(24);
 		
 		cartlines = new CartLines();
 		
 		cartlines.setProduct(product);
-		cartlines.setCartId(1);
-		cartlines.setProductCount(3);
+		cartlines.setCartId(22);
+		cartlines.setProductCount(24);
 		cartlines.setBuyingPrice(product.getUnitPrice());
 		cartlines.setTotal(cartlines.getBuyingPrice() * cartlines.getProductCount());
 		cartlines.setAvailable(true);
