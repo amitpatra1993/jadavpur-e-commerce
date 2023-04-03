@@ -1,4 +1,4 @@
-$(function() 
+ $(function() 
 {
 	
 	//Fetch Active Product
@@ -15,8 +15,8 @@ $(function()
 		}
 		
 		$table.DataTable({
-			lengthMenu : [ [ 5, 10, 20, -1 ], [ '5 Products', '10 Products', '20 Products', 'ALL Products' ] ],
-			pageLength : 10,
+			lengthMenu : [ [ 3, 5, 10, -1 ], [ '3 Products', '5 Products', '10 Products', 'ALL Products' ] ],
+			pageLength : 5,
 			ajax : {
 						url : jsonUrl,
 						dataSrc : ''
@@ -65,9 +65,34 @@ $(function()
 											+ '/product/view/single/'
 											+ data
 											+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span>View Details</a> &#160;';
-											
+											if (userRole !== 'ADMIN') 
+											{
+												if (row.quantity < 1) 
+													{
+														str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+													} 
+													else 
+													{
+
+														str += '<a href="'
+																+ window.contextRoot
+																+ '/cart/add/'
+																+ data
+																+ '/product" class="btn btn-success"><i class="fas fa-shopping-cart">Add To Cart</i></a>';
+													}
+											} 	
+											else 
+											{
+													str += '<a href="'
+															+ window.contextRoot
+															+ '/manage/'
+															+ data
+															+ '/product" class="btn btn-warning"><span class="glyphicon glyphicon-pencil">EDIT Product</span></a>';
+											}
 											return str;
 											}
+											
+											
 						}
 				]
 			
@@ -162,13 +187,12 @@ $(function()
 								
 							},	
 					],
-
-				initComplete : function() {
+					initComplete : function() {
 						var api = this.api();
 
 						api
 								.$('.switch input[type = "checkbox"]')
-								.on(
+.on(
 										'change',
 										function() {
 
@@ -211,7 +235,7 @@ $(function()
 																		.prop(
 																				'checked',
 																				!checked);
-																}
+															}
 														},
 													});
 										});
