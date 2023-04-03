@@ -15,11 +15,17 @@ import javax.persistence.Transient;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
-
 @Entity
 @Table(name="Niit_Jadavpur_User")
 public class User implements Serializable
 {
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", contactNumber=" + contactNumber + ", role=" + role + ", password=" + password
+				+ ", confirmPassword=" + confirmPassword + ", enabled=" + enabled + ", cart=" + cart + "]";
+	}
+
 	/**
 	 * 
 	 */
@@ -138,6 +144,8 @@ public class User implements Serializable
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
+	
+	
 	
 
 }
