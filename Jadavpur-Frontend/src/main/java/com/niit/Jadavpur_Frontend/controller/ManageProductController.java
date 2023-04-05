@@ -32,11 +32,12 @@ public class ManageProductController
 {
 	@Autowired
 	CategoryDAO categoryDAO;
+	
 	@Autowired
-	ProductDAO productDAO; 
+	ProductDAO productDAO;
+	
 	@Autowired
 	UserDAO userDAO;
-	
 	
 	@RequestMapping(value={"/{id}/product"})
 	public ModelAndView editProduct(@PathVariable("id") int p_id)
@@ -69,11 +70,8 @@ public class ManageProductController
 				mv.addObject("message", "Category added successfully!");
 			}
 		}
-		return mv;		
+		return mv;	
 	}
-	
-	
-	
 	
 	@RequestMapping(value={"/add/product"})
 	public String addProduct(@Valid @ModelAttribute("newProduct") Product p,BindingResult results , ModelMap model,HttpServletRequest request)
@@ -84,10 +82,12 @@ public class ManageProductController
 		}
 		else
 		{
+			
 			if(!(p.getFile().getOriginalFilename().equals("") || p.getFile() == null))
 			{
 				new ProductValidation().validate(p,results);
 			}
+			
 		}
 		
 		
@@ -101,8 +101,12 @@ public class ManageProductController
 		
 		else
 		{
+			
 			if(p.getId() == 0)
+			{
+				p.setActive(true);
 				productDAO.insert(p);
+			}
 			else
 				productDAO.update(p);
 			
@@ -115,9 +119,7 @@ public class ManageProductController
 		}
 			
 		
-	
 	}
-	
 	
 	@RequestMapping(value={"/add/category"})
 	public String addCategory(@ModelAttribute("category") Category c)
@@ -128,20 +130,16 @@ public class ManageProductController
 		return "redirect:/manage/product?operation=category";
 	}
 	
-	
 	@ModelAttribute("categorylist") 
 	public List<Category> modelCategoryList() 
 	{
 		return categoryDAO.categoryList();
 	}
-	
-
 	@ModelAttribute("supplierlist") 
 	public List<User> modelSupplierList() 
 	{
 		return userDAO.getSupplierList();
 	}
-	
 	
 	@ModelAttribute("category") 
 	public Category modelCategory() 
@@ -149,7 +147,7 @@ public class ManageProductController
 		return new Category();
 	}
 	
-	@RequestMapping(value = "/product/{id}/activation", method=RequestMethod.POST)
+	@RequestMapping(value = "/product/{id}/activation", method= {RequestMethod.POST})
 	@ResponseBody
 	public String handleProductAvtivation(@PathVariable int id)
 	{
@@ -166,5 +164,7 @@ public class ManageProductController
 		return (isActive)? 
 				"Successfully Deactivated the product with id : " +product.getId()
 				: "Successfully Activated the product with id : " +product.getId();
+				
 	}
+	
 }
