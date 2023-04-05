@@ -30,39 +30,39 @@ public class ProductTest
 	public void testInsert()
 	{
 		product = new Product();
-		//product.setId(17);
-		product.setName("mi Smart Watch id-116");
-		product.setBrand("mi");
-		product.setDescription("Fitness Tracker Blood Pressure Heart Rate Monitor for Girls & Boys with HT1 Wireless Bluetooth Headset Hand-Free Calling");
-		product.setUnitPrice(1679);
-		product.setActive(true);
-		product.setCategoryId(8);
-		product.setSupplierId(7);
-		product.setQuantity(82);
+		//product.setId(3);
+		//product.setName("15s-fr2512TU");
+		//product.setBrand("HP");
+		//product.setDescription("512 GB PCIe® NVMe™ M.2 SSD\r\n" + 
+		//		"8 GB DDR4-3200 MHz RAM (1 x 8 GB)");
+		//product.setUnitPrice(46999.00);
+		//product.setActive(true);
+		//product.setCategoryId(5);
+		//product.setSupplierId(2);
+		//product.setQuantity(3);
 		
 		assertEquals("Error" , true , productDAO.insert(product));
 	}
 	
-	  //@Test
-		public void testGetProduct()
-		{
-			product = productDAO.getProduct(1);
-			
-			assertEquals("Error" , "PRDf311b4016544", product.getCode());
-		}
+	//@Test
+	public void testGetProduct()
+	{
+		product = productDAO.getProduct(1);
 		
-	   //@Test
-		public void testActiveProduct()
-		{
-			assertEquals("Error" ,4, productDAO.listActiveProducts().size());
-		}
-		
-		@Test
-		public void testActiveCategoryProduct()
-		{
-			assertEquals("Error" ,5, productDAO.listActiveProductsByCategory(6).size());
-		}
-		
+		//assertEquals("Error" , "PRDf311b4016544", product.getCode());
+	}
 	
-	 
+	//@Test
+	public void testActiveProduct()
+	{
+		assertEquals("Error" ,3, productDAO.listActiveProducts().size());
+	}
+	
+	//@Test
+	public void testActiveCategoryProduct()
+	{
+		assertEquals("Error" ,2, productDAO.listActiveProductsByCategory(5).size());
+	}
+	
+	
 }

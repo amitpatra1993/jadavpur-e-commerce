@@ -39,7 +39,7 @@ import com.niit.Jadavpur_Backend.modal.Product;
 		cartlines = new CartLines();
 		
 		cartlines.setProduct(product);
-		cartlines.setCartId(22);
+		cartlines.setCartId(24);
 		cartlines.setProductCount(24);
 		cartlines.setBuyingPrice(product.getUnitPrice());
 		cartlines.setTotal(cartlines.getBuyingPrice() * cartlines.getProductCount());
