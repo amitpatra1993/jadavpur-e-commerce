@@ -1,6 +1,7 @@
 <div class="container">
 
-
+<c:choose>
+		<c:when test="${not empty cartlines}">
 	<table id="cart" class="table table-hover table-condensed">
 		<thead>
 			<tr>
@@ -64,4 +65,15 @@
 			</tr>
 		</tfoot>
 	</table>
+	</c:when>
+		<c:otherwise>
+
+			<div class="jumbotron">
+
+				<h3 class="text-center">Your Cart is Empty!</h3>
+
+			</div>
+
+		</c:otherwise>
+	</c:choose>
 </div>
