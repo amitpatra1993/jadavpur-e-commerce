@@ -1,5 +1,7 @@
 package com.niit.Jadavpur_Backend.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Niit_Jadavpur_Category")
-public class Category 
+public class Category implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

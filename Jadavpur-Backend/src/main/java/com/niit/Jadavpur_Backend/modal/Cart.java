@@ -1,5 +1,7 @@
 package com.niit.Jadavpur_Backend.modal;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Niit_Jadavpur_Cart")
-public class Cart 
+public class Cart implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
