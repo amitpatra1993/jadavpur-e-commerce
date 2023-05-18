@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.niit.Jadavpur_Backend.DAO.UserDAO;
+import com.niit.Jadavpur_Backend.modal.Address;
 import com.niit.Jadavpur_Backend.modal.User;
 
 public class UserTest 
@@ -28,31 +29,42 @@ public class UserTest
 	@Test
 	public void testInsert()
 	{
-		/*
+		
+		
 		user = new User();
-		user.setContactNumber("1234567890");
-		user.setEmail("rohan@gmail.com");
+	
+		user.setContactNumber("9038760522");
+		user.setEmail("debtanayadutta@gmail.com");
 		user.setEnabled(true);
-		user.setFirstName("Rohan");
-		user.setId(2);
-		user.setLastName("Mishra");
-		user.setPassword("user12345");
+		user.setFirstName("Debtanaya");
+		user.setLastName("Dutta");
+		user.setPassword("dd22211");
 		user.setRole("USER");
-		*/
-		user = new User();
+	
 		
-		user.setContactNumber("9033662457");
-		user.setEmail("karansingh@gmail.com");
+	    /*
+		user.setContactNumber("9076244550");
+		user.setEmail("amitpatra@gmail.com");
 		user.setEnabled(true);
-		user.setFirstName("Karan");
-		//user.setId(5);
-		user.setLastName("Singh");
-		user.setPassword("supplier51124");
+		user.setFirstName("Amit Kumar");
+		user.setLastName("Patra");
+		user.setPassword("akp1993");
+		user.setRole("ADMIN");
+	    */
+		
+		
+		/*
+		user.setContactNumber("9033662457");
+		user.setEmail("aakashroy@gmail.com");
+		user.setEnabled(true);
+		user.setFirstName("Aakash");
+		user.setLastName("Roy");
+		user.setPassword("ar55500");
 		user.setRole("SUPPLIER");
-		
-		
+	    */
 		
 		assertEquals("Error inserting user" ,  true , userDAO.insert(user));
+		
 	}
 	
 	//@Test
@@ -68,6 +80,29 @@ public class UserTest
 		{
 			user = userDAO.getUser("rohan@gmail.com");
 			assertEquals("Error fetching user" , 2 , userDAO.getSupplierList().size());
+		}
+		
+		
+	//@Test
+		public void testAddUser() 
+		{
+			
+			Address address = new Address();
+			address.setAddressLineOne("31/1 abcd road");
+			address.setAddressLineTwo("Near South City");
+			address.setCity("Jadavpur");
+			address.setState("West Bengal");
+			address.setCountry("India");
+			address.setPostalCode("700026");
+			address.setShipping(true);
+			
+			address.setUserId(33);
+				
+			assertEquals("Failed to add the billing address!", true, userDAO.insertAddress(address));
+			
+			
+			
+			
 		}
 	
 }
